@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+    implementation 'com.google.auto.service:auto-service:1.0-rc3'
+    implementation files(org.gradle.internal.jvm.Jvm.current().toolsJar)
+}
+repositories {
+    jcenter()
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        //本地仓库路径，以放到项目根目录下的 repo 的文件夹为例
+        repository(url: uri('../repo'))
+
+        //groupId ，自行定义
+        pom.groupId = 'cn.xydzjnq'
+
+        //artifactId
+        pom.artifactId = 'astplugin'
+
+        //插件版本号
+        pom.version = '1.0.0'
+    }
+}

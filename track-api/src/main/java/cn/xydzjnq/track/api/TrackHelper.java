@@ -18,6 +18,7 @@ import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.ToggleButton;
 
@@ -248,6 +249,20 @@ public class TrackHelper {
     }
 
     @Keep
+    public static void trackViewOnClick(MenuItem menuItem) {
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("$element_type", "menuItem");
+
+            jsonObject.put("$element_content", menuItem.getTitle());
+
+            TrackAPI.getInstance().track("$AppClick", jsonObject);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Keep
     public static void trackViewOnClick(String tabName) {
         trackTabHost(tabName);
     }
@@ -285,7 +300,7 @@ public class TrackHelper {
 
     @Keep
     public static void trackExpandableListViewChildOnClick(ExpandableListView expandableListView, View view,
-                                                            int groupPosition, int childPosition) {
+                                                           int groupPosition, int childPosition) {
         try {
             Context context = expandableListView.getContext();
             if (context == null) {
@@ -334,6 +349,10 @@ public class TrackHelper {
         }
     }
 
+    @Keep
+    public static void trackViewOnClick(android.widget.AdapterView adapterView, android.view.View view, int position, long id) {
+        trackViewOnClick(adapterView, view, position);
+    }
 
     @Keep
     public static void trackViewOnClick(android.widget.AdapterView adapterView, android.view.View view, int position) {
@@ -394,6 +413,11 @@ public class TrackHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Keep
+    public static void trackViewOnClick(RatingBar ratingBar, float v, boolean b) {
+        trackViewOnClick(ratingBar);
     }
 
     /**

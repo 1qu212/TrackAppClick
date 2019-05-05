@@ -1,1 +1,1 @@
-include ':app', ':track-api', ':aspectjplugin', ':aspectjapi', ':asmplugin'
+include ':app', ':track-api', ':aspectjplugin', ':aspectjapi', ':asmplugin', ':astplugin'

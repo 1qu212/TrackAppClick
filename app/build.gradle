@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
-apply plugin: 'asmplugin'
 
 android {
     compileOptions {
@@ -43,4 +42,5 @@ dependencies {
     //https://github.com/JakeWharton/butterknife
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    annotationProcessor 'cn.xydzjnq:astplugin:1.0.0'
 }

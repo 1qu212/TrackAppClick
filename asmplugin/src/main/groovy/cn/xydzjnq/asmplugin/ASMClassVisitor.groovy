@@ -133,7 +133,9 @@ class ASMClassVisitor extends ClassVisitor implements Opcodes {
                      */
                     else if (mInterfaces.contains('android/widget/RatingBar$OnRatingBarChangeListener') && nameDesc == 'onRatingChanged(Landroid/widget/RatingBar;FZ)V') {
                         methodVisitor.visitVarInsn(ALOAD, 1)
-                        methodVisitor.visitMethodInsn(INVOKESTATIC, SDK_API_CLASS, "trackViewOnClick", "(Landroid/view/View;)V", false)
+                        methodVisitor.visitVarInsn(FLOAD, 2)
+                        methodVisitor.visitVarInsn(ILOAD, 3)
+                        methodVisitor.visitMethodInsn(INVOKESTATIC, SDK_API_CLASS, "trackViewOnClick", "(Landroid/widget/RatingBar;FZ)V", false)
                     }
                     /**
                      *         new SeekBar.OnSeekBarChangeListener() {
@@ -159,7 +161,8 @@ class ASMClassVisitor extends ClassVisitor implements Opcodes {
                         methodVisitor.visitVarInsn(ALOAD, 1)
                         methodVisitor.visitVarInsn(ALOAD, 2)
                         methodVisitor.visitVarInsn(ILOAD, 3)
-                        methodVisitor.visitMethodInsn(INVOKESTATIC, SDK_API_CLASS, "trackViewOnClick", "(Landroid/widget/AdapterView;Landroid/view/View;I)V", false)
+                        methodVisitor.visitVarInsn(LLOAD, 4)
+                        methodVisitor.visitMethodInsn(INVOKESTATIC, SDK_API_CLASS, "trackViewOnClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", false)
                     }
                     /**
                      *      new TabHost.OnTabChangeListener() {
@@ -185,7 +188,8 @@ class ASMClassVisitor extends ClassVisitor implements Opcodes {
                         methodVisitor.visitVarInsn(ALOAD, 1)
                         methodVisitor.visitVarInsn(ALOAD, 2)
                         methodVisitor.visitVarInsn(ILOAD, 3)
-                        methodVisitor.visitMethodInsn(INVOKESTATIC, SDK_API_CLASS, "trackViewOnClick", "(Landroid/widget/AdapterView;Landroid/view/View;I)V", false)
+                        methodVisitor.visitVarInsn(LLOAD, 4)
+                        methodVisitor.visitMethodInsn(INVOKESTATIC, SDK_API_CLASS, "trackViewOnClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", false)
                     }
                     /**
                      *          new ExpandableListView.OnGroupClickListener() {

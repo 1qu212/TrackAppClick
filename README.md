@@ -25,7 +25,7 @@ Step2：新建properties文件在resources/META-INF/grdle-plugins目录下创建
 Step1：定义切面Aspect；
 
 Step2：apply plugin: 'aspectjplugin'
-#### App使用aspectJ方案
+#### App使用aspectJ方案(AOP)
 Step1：
        
        implementation 'cn.xydzjnq:track-api:1.0.0@aar'（这是所有方案所必须的）
@@ -37,7 +37,7 @@ Step2：
         apply plugin: 'aspectjplugin'
 ***
 
-### ASM方案
+### ASM方案(字节码操作)
 ### asmplugin模块
 Step1：创建groovy目录，并新建一个实现Plugin<Project>接口的类（该类apply方法中会使用自定义的Transform）。
     
