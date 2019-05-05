@@ -25,7 +25,21 @@ Step1：定义切面Aspect；
 Step2：apply plugin: 'aspectjplugin'
 #### App使用aspectJ方案
 Step1：
-    implementation 'cn.xydzjnq:track-api:1.0.0@aar'
+    implementation 'cn.xydzjnq:track-api:1.0.0@aar'（这是所有方案所必须的）
     implementation 'cn.xydzjnq:aspectjapi:1.0.0@aar'
 Step2：apply plugin: 'aspectjplugin'
+***
+
+### ASM方案
+### asmplugin模块
+Step1：创建groovy目录，并新建一个实现Plugin<Project>接口的类（该类apply方法中会使用自定义的Transform）。
+Step2：新建properties文件在resources/META-INF/grdle-plugins目录下创建一个asmplugin.properties文件，其中asmplugin就是以后引用的插件名。
+Step3：TrackTransform文件主要是transform()方法（在其中会对TransformInput进行处理，最终输出到outputProvider中）。
+Step4：ClassModifier文件主要将.class文件或jar文件处理成字节流，最终调用自定义的ClassVisitor来修改文件。
+Step5：ASMClassVisitor文件（自定义的ClassVisitor）在visitMethod()中访问需要修改的方法，并通过自定义AdviceAdapter的onMethodExit()修改符合特定条件的方法。
+Step6：生成gradle plugin。
+#### App使用ASM方案
+Step1：
+    implementation 'cn.xydzjnq:track-api:1.0.0@aar'（这是所有方案所必须的）
+Step2：apply plugin: 'asmplugin'
 ***
