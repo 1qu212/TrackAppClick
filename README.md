@@ -38,7 +38,7 @@ Step2：
 ***
 
 ### ASM方案(字节码操作)
-### asmplugin模块
+#### asmplugin模块
 Step1：创建groovy目录，并新建一个实现Plugin<Project>接口的类（该类apply方法中会使用自定义的Transform）。
     
 Step2：新建properties文件在resources/META-INF/grdle-plugins目录下创建一个asmplugin.properties文件，其中asmplugin就是以后引用的插件名。
@@ -58,4 +58,25 @@ Step1：
 Step2：
 
         apply plugin: 'asmplugin'
+***
+
+### AST方案（语法树解析操作）
+#### astplugin模块
+Step1：自定义AbstractProcessor（在该类的process方法中解析操作语法树）。
+
+Step2：新建properties文件在resources/META-INF/services目录下创建一个javax.annotation.processing.Processor文件，文件中指定自定义AbstractProcessor位置。
+
+Step3：InsertTrackCodeTreeTranslator文件（自定义TreeTranslator），在visitMethodDef()方法中处理Method，insertTrackCode()方法是具体的代码插入操作。
+
+Step4：TrackMethodCell文件，方法信息的封装类。
+
+Step5：TrackMethodConfig文件，用来判定是否是需要插入代码的Method。
+
+Step6：生成annotationProcessor plugin。
+#### App使用AST方案
+Step1：
+       
+       implementation 'cn.xydzjnq:track-api:1.0.0@aar'（这是所有方案所必须的）
+
+       annotationProcessor 'cn.xydzjnq:astplugin:1.0.0'
 ***
