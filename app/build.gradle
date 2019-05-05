@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
-apply plugin: 'aspectjplugin'
+apply plugin: 'asmplugin'
 
 android {
     compileOptions {
@@ -39,7 +39,6 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 
     implementation 'cn.xydzjnq:track-api:1.0.0@aar'
-    implementation 'cn.xydzjnq:aspectjapi:1.0.0@aar'
 
     //https://github.com/JakeWharton/butterknife
     implementation 'com.jakewharton:butterknife:8.8.1'
