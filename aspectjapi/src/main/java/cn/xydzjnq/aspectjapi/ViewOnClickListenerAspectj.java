@@ -171,7 +171,7 @@ public class ViewOnClickListenerAspectj {
     @After("execution(* android.widget.TabHost.OnTabChangeListener.onTabChanged(String))")
     public void onTabChangedAOP(final JoinPoint joinPoint) {
         String tabName = (String) joinPoint.getArgs()[0];
-        TrackHelper.trackTabHost(tabName);
+        TrackHelper.trackViewOnClick(tabName);
     }
 
     /**

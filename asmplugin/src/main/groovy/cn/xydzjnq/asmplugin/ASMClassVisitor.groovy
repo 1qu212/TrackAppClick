@@ -171,7 +171,7 @@ class ASMClassVisitor extends ClassVisitor implements Opcodes {
                      */
                     else if (mInterfaces.contains('android/widget/TabHost$OnTabChangeListener') && nameDesc == 'onTabChanged(Ljava/lang/String;)V') {
                         methodVisitor.visitVarInsn(ALOAD, 1)
-                        methodVisitor.visitMethodInsn(INVOKESTATIC, SDK_API_CLASS, "trackTabHost", "(Ljava/lang/String;)V", false)
+                        methodVisitor.visitMethodInsn(INVOKESTATIC, SDK_API_CLASS, "trackViewOnClick", "(Ljava/lang/String;)V", false)
                     }
                     /**
                      *          new AdapterView.OnItemClickListener() {
@@ -199,7 +199,8 @@ class ASMClassVisitor extends ClassVisitor implements Opcodes {
                         methodVisitor.visitVarInsn(ALOAD, 1)
                         methodVisitor.visitVarInsn(ALOAD, 2)
                         methodVisitor.visitVarInsn(ILOAD, 3)
-                        methodVisitor.visitMethodInsn(INVOKESTATIC, SDK_API_CLASS, "trackExpandableListViewGroupOnClick", "(Landroid/widget/ExpandableListView;Landroid/view/View;I)V", false)
+                        methodVisitor.visitVarInsn(LLOAD, 4)
+                        methodVisitor.visitMethodInsn(INVOKESTATIC, SDK_API_CLASS, "trackViewOnClick", "(Landroid/widget/ExpandableListView;Landroid/view/View;IJ)V", false)
                     }
                     /**
                      *      new ExpandableListView.OnChildClickListener() {
@@ -215,7 +216,8 @@ class ASMClassVisitor extends ClassVisitor implements Opcodes {
                         methodVisitor.visitVarInsn(ALOAD, 2)
                         methodVisitor.visitVarInsn(ILOAD, 3)
                         methodVisitor.visitVarInsn(ILOAD, 4)
-                        methodVisitor.visitMethodInsn(INVOKESTATIC, SDK_API_CLASS, "trackExpandableListViewChildOnClick", "(Landroid/widget/ExpandableListView;Landroid/view/View;II)V", false)
+                        methodVisitor.visitVarInsn(LLOAD, 5)
+                        methodVisitor.visitMethodInsn(INVOKESTATIC, SDK_API_CLASS, "trackViewOnClick", "(Landroid/widget/ExpandableListView;Landroid/view/View;IIL)V", false)
                     }
                 }
             }

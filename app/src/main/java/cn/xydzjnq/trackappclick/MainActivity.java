@@ -96,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
         dataList.add("上海");
         dataList.add("广州");
         dataList.add("深圳");
-        dataList.add("咸宁");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, dataList);
 
         //为适配器设置下拉列表下拉时的菜单样式。

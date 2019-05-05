@@ -248,6 +248,11 @@ public class TrackHelper {
     }
 
     @Keep
+    public static void trackViewOnClick(String tabName) {
+        trackTabHost(tabName);
+    }
+
+    @Keep
     public static void trackTabHost(String tabName) {
         try {
             JSONObject properties = new JSONObject();
@@ -258,6 +263,18 @@ public class TrackHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Keep
+    public static void trackViewOnClick(ExpandableListView expandableListView, View view,
+                                        int groupPosition, long id) {
+        trackExpandableListViewChildOnClick(expandableListView, view, groupPosition, -1);
+    }
+
+    @Keep
+    public static void trackViewOnClick(ExpandableListView expandableListView, View view,
+                                        int groupPosition, int childPosition, long id) {
+        trackExpandableListViewChildOnClick(expandableListView, view, groupPosition, childPosition);
     }
 
     @Keep
