@@ -9,10 +9,6 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
-/**
- * Created by 王灼洲 on 2017/5/4
- */
-
 public class SAListViewAdapter extends BaseAdapter {
     private LayoutInflater mLayoutInflater;
 

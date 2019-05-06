@@ -4,9 +4,6 @@ import android.app.Application;
 
 import cn.xydzjnq.track.api.TrackAPI;
 
-/**
- * Created by 王灼洲 on 2018/7/22
- */
 public class MyApplication extends Application {
     @Override
     public void onCreate() {
